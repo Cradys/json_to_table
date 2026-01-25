@@ -1,1 +1,5 @@
 .venv/
+converted_tables/
+jsons/*
+!jsons/example_array.json
+!jsons/example_object.json

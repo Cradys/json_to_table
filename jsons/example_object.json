@@ -1,0 +1,42 @@
+{
+    "_id": "65ce5875617005cd3cd23463",
+    "guid": "efd04014-5fad-4273-bc78-608f3af14d8d",
+    "isActive": true,
+    "tags": {
+        "item": "aliqua",
+        "value": {
+            "company": "Pushcart"
+        }
+    },
+    "balance": "$1,797.03",
+    "picture": "http://placehold.it/32x32",
+    "age": 20,
+    "eye Color": "brown",
+    "name": "Rowe Brooks",
+    "gender": "male",
+    "company": "SURETECH",
+    "email": "rowebrooks@suretech.com",
+    "phone": "+1 (996) 490-3921",
+    "friends": [
+        {
+            "id": 0,
+            "name": "Heather Whitaker"
+        },
+        {
+            "id": 1,
+            "name": "Madeleine Velez"
+        },
+        {
+            "id": 2,
+            "name": "Maureen Henson"
+        }
+    ],
+    "address": "971 Louisiana Avenue, Waverly, Michigan, 1402",
+    "registered": "2020-10-17T02:02:01 +04:00",
+    "latitude": -9.24534,
+    "longitude": -5.952503,
+    "greeting": "Hello, Rowe Brooks! You have 1 unread messages.",
+    "favoriteFruit": "apple",
+    "additional_data": ["first", "second", "third"],
+    "empty_array": []
+}

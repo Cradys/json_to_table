@@ -1,0 +1,42 @@
+[
+	{
+		"_id": "65ce58753546634a0dceb369",
+		"guid": "7eac8b2b-6d0d-47b6-9370-e8ee5d95421c",
+		"isActive": true,
+		"tags": {
+			"item": "et",
+			"value": {
+				"company": "Filodyne"
+			}
+		},
+		"balance": "$2,839.71",
+		"picture": "http://placehold.it/32x32",
+		"age": 35,
+		"eye Color": "brown",
+		"name": "Hartman Tyler",
+		"gender": "male",
+		"company": "COGENTRY",
+		"email": "hartmantyler@cogentry.com",
+		"phone": "+1 (843) 467-2321",
+		"friends": [
+			{
+				"id": 0,
+				"name": "Anastasia Mclean"
+			},
+			{
+				"id": 1,
+				"name": "Douglas Marshall"
+			},
+			{
+				"id": 2,
+				"name": "Chris Stone"
+			}
+		],
+		"address": "494 Gain Court, Wilmington, Guam, 9348",
+		"registered": "2018-07-22T10:00:39 +04:00",
+		"latitude": -37.13536,
+		"longitude": -116.583092,
+		"greeting": "Hello, Hartman Tyler! You have 1 unread messages.",
+		"favoriteFruit": "strawberry"
+	}
+]
