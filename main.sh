@@ -1,1 +1,1 @@
-python3 src/main.py example_object
+uv run src/main.py example_object

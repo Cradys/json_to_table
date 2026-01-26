@@ -1,7 +1,7 @@
 import sys
 import os
 from files import extract_source_file_data
-from json_data import DataTypes, JSONData
+from json_data import DataTypes, JSONData, ParentObject, DataObject
 
 JSON_SOURCE_DIR = "./jsons"
 CONVERTED_TABLE_DIR = "./converted_tables"
@@ -13,7 +13,7 @@ def main():
         os.mkdir(CONVERTED_TABLE_DIR)    
 
     json_data = extract_source_file_data(source_file)
-    print(json_data_to_objects(json_data))
+    print(json_data_to_objects(json_data, "Root"))
 
     # if isinstance(json_data, list):
     #     print(f"dict_data variable is list")
@@ -23,36 +23,42 @@ def main():
     # else:
     #     raise Exception("Unkown data type of json_data variable")
 
-def json_data_to_objects(json_data):
+def json_data_to_objects(json_data, name=None):
     fields_list = []
     
     if isinstance(json_data, dict):
         for value in json_data.keys():
             match json_data[value]:
                 case list():
-                    print("list")
+                    fields_list.append(json_data_to_objects(json_data[value], value))
                 case dict():
-                    print("dict")
+                    fields_list.append(json_data_to_objects(json_data[value], value))
                 case str():
-                    fields_list.append(JSONData(name=value, data_type=DataTypes.STR, example=json_data[value]))
+                    fields_list.append(DataObject(name=value, data_type=DataTypes.STR, example=json_data[value]))
                 case int():
-                    fields_list.append(JSONData(name=value, data_type=DataTypes.INT, example=json_data[value]))
+                    fields_list.append(DataObject(name=value, data_type=DataTypes.INT, example=json_data[value]))
                 case bool():
-                    fields_list.append(JSONData(name=value, data_type=DataTypes.BOOL, example=json_data[value]))
+                    fields_list.append(DataObject(name=value, data_type=DataTypes.BOOL, example=json_data[value]))
                 case float():
-                    fields_list.append(JSONData(name=value, data_type=DataTypes.FLOAT, example=json_data[value]))
+                    fields_list.append(DataObject(name=value, data_type=DataTypes.FLOAT, example=json_data[value]))
                 case _:
-                    fields_list.append(JSONData(name=value, data_type=DataTypes.NONE, example=json_data[value]))
+                    fields_list.append(DataObject(name=value, data_type=DataTypes.NONE, example=json_data[value]))
+
+        parent = ParentObject(name=name, data_type=DataTypes.OBJECT, children=fields_list)   
+        return parent   
                     
-                    
-                    
-            # if isinstance(json_data[value], list) or isinstance(json_data[value], dict):
-            #     print(f"{value}\n{"-"*20}")
-            #     json_data_to_objects(json_data[value])
     if isinstance(json_data, list):
-        print(f"{type(json_data)}\n{json_data}\n{"-"*20}")
-    
-    return(fields_list)
+        if not json_data:
+            return DataObject(name=name, data_type=DataTypes.ARRAY, example="[]")
+        
+        for value in json_data:
+            if isinstance(value, dict):
+                fields_list.append(json_data_to_objects(value))
+        
+        if fields_list:
+            return ParentObject(name=name, data_type=DataTypes.ARRAY, children=fields_list)
+        print(json_data[:3:])
+        return DataObject(name=name, data_type=DataTypes.ARRAY, example=json_data[:3:])
 
 if __name__ == "__main__":
     main()

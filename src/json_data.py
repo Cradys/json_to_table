@@ -17,4 +17,25 @@ class JSONData():
         self.children = children
     
     def __repr__(self):
-        return f"JSONData: {self.name}\ndata_type: {self.data_type}\nexample: {self.example}\nchildren: {self.children}\n{"-"*20}\n"
+        return f"""
+{"-"*5}ParentObject{"-"*5}
+Key name: {self.name}
+data_type: {self.data_type}
+example: {self.example}
+children: {self.children}
+{"-"*20}"""
+    
+
+class ParentObject(JSONData):
+    def __init__(self, name, data_type, example=None, children=None):
+        super().__init__(name, data_type, None, children)
+
+    def __repr__(self):
+        return f"\nParentObject {self.name} - {self.children}"
+
+class DataObject(JSONData):
+    def __init__(self, name, data_type, example=None, children=None):
+        super().__init__(name, data_type, example, None)
+
+    def __repr__(self):
+        return f"Field: {self.name}"

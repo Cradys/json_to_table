@@ -39,6 +39,5 @@
     "favoriteFruit": "apple",
     "additional_data": ["first", "second", "third"],
     "empty_array": [],
-    "true_false": false,
     "null": null
 }
