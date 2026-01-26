@@ -38,5 +38,7 @@
     "greeting": "Hello, Rowe Brooks! You have 1 unread messages.",
     "favoriteFruit": "apple",
     "additional_data": ["first", "second", "third"],
-    "empty_array": []
+    "empty_array": [],
+    "true_false": false,
+    "null": null
 }
