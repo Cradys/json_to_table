@@ -32,12 +32,24 @@ class ParentObject(JSONData):
     def __init__(self, name, data_type, example=None, children=None):
         super().__init__(name, data_type, None, children)
 
+    def __eq__(self, value):
+        if self.name == value.name and self.children == value.children:
+            return True
+        
+        return False
+
     def __repr__(self):
         return f"\nParentObject {self.name} {self.data_type} - {self.children}"
+    
 
 class DataObject(JSONData):
     def __init__(self, name, data_type, example=None, children=None):
         super().__init__(name, data_type, example, None)
+
+    def __eq__(self, value):
+        if self.name == value.name:
+            return True
+        return False
 
     def __repr__(self):
         return f"Field: {self.name}"
