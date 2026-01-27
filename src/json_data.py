@@ -7,7 +7,7 @@ class DataTypes(Enum):
     BOOL = "bool"
     ARRAY = "array"
     ARRAY_OBJECTS = "array_objects"
-    ARRAY_VALUE = "array_value"
+    ARRAY_VALUES = "array_value"
     OBJECT = "object"
     NONE = "null"
 

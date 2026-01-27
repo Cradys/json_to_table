@@ -59,7 +59,7 @@ def json_data_to_objects(json_data, name=None):
         if fields_list:
             for value in fields_list:
                 if value.data_type != DataTypes.OBJECT:
-                    return ParentObject(name=name, data_type=DataTypes.ARRAY_VALUE, children=fields_list)
+                    return ParentObject(name=name, data_type=DataTypes.ARRAY_VALUES, children=fields_list)
             return ParentObject(name=name, data_type=DataTypes.ARRAY_OBJECTS, children=fields_list)
         return DataObject(name=name, data_type=DataTypes.ARRAY, example=json_data[:3:])
 
