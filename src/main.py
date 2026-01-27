@@ -66,31 +66,19 @@ def json_data_to_objects(json_data, name=None):
         return DataObject(name=name, data_type=DataTypes.ARRAY, example=json_data[:3:])
     
 def merge_array_of_objects(fields_list):
-    print(fields_list)
     merged_obj = fields_list[0]
-    print(f"merged_obj - {merged_obj}\n --------")
 
     for i in range(1, len(fields_list)):
-        print(fields_list[i])
         if merged_obj == fields_list[i]:
-            print("equal")
-            print(merged_obj.data_type)
-            print(fields_list[i].data_type)
-            print(f"{"#"*10}\n{merged_obj.children}\n---{fields_list[i].children}\n{"#"*10}")
             continue
-            if merged_obj.data_type is DataTypes.ARRAY_OBJECTS:
-                print(f"{"@"*10}\nARRAY_OBJECTS\n{fields_list[i]}\n{"@"*10}")
-                merge_array_of_objects(fields_list[i])
-        
         for value in fields_list[i].children:
-            print(f"{value.data_type} {value.name}")
             if value not in merged_obj.children:
                 if value.data_type is DataTypes.ARRAY_OBJECTS:
-                    merge_array_of_objects(value)
+                    merge_ch = merged_obj.find_child_by_name(value.name)
+                    merge_array_of_objects([merge_ch.children, value.children])
+                    continue
                 merged_obj.children.append(value)
-                continue
-    
-    print(f"{"-"*10}\nMERGERD\n{merged_obj}\n{"-"*10}")
+                
     return merged_obj
                 
 
@@ -98,8 +86,7 @@ def merge_array_of_objects(fields_list):
     # merged_list = []
 
     # for field in fields_list:
-    #     if not merged_list:
-    #         merged_list = field.children
+    #     if not merged_list:    #         merged_list = field.children
     #         continue
     #     for child in field.children:
     #         if child not in merged_list:
