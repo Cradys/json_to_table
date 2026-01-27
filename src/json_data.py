@@ -6,6 +6,8 @@ class DataTypes(Enum):
     FLOAT = "float"
     BOOL = "bool"
     ARRAY = "array"
+    ARRAY_OBJECTS = "array_objects"
+    ARRAY_VALUE = "array_value"
     OBJECT = "object"
     NONE = "null"
 
@@ -31,7 +33,7 @@ class ParentObject(JSONData):
         super().__init__(name, data_type, None, children)
 
     def __repr__(self):
-        return f"\nParentObject {self.name} - {self.children}"
+        return f"\nParentObject {self.name} {self.data_type} - {self.children}"
 
 class DataObject(JSONData):
     def __init__(self, name, data_type, example=None, children=None):

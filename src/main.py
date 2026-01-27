@@ -31,6 +31,7 @@ def json_data_to_objects(json_data, name=None):
             match json_data[value]:
                 case list():
                     fields_list.append(json_data_to_objects(json_data[value], value))
+                    print(f"{"-"*20}\n{fields_list}\n{"-"*20}")
                 case dict():
                     fields_list.append(json_data_to_objects(json_data[value], value))
                 case str():
@@ -56,8 +57,10 @@ def json_data_to_objects(json_data, name=None):
                 fields_list.append(json_data_to_objects(value))
         
         if fields_list:
-            return ParentObject(name=name, data_type=DataTypes.ARRAY, children=fields_list)
-        print(json_data[:3:])
+            for value in fields_list:
+                if value.data_type != DataTypes.OBJECT:
+                    return ParentObject(name=name, data_type=DataTypes.ARRAY_VALUE, children=fields_list)
+            return ParentObject(name=name, data_type=DataTypes.ARRAY_OBJECTS, children=fields_list)
         return DataObject(name=name, data_type=DataTypes.ARRAY, example=json_data[:3:])
 
 if __name__ == "__main__":
