@@ -57,4 +57,15 @@ def merge_array_of_objects(fields_list):
                 merged_obj.children.append(value)
                 
     return merged_obj
+
+def normalize_array_objects(data_object):
+    if data_object.data_type == DataTypes.ARRAY_OBJECTS:
+        data_object.children = data_object.children.children
+    
+    for child in data_object.children:
+        if child.data_type == DataTypes.ARRAY_OBJECTS:
+            normalize_array_objects(child)
+    
+    return
+    
                 

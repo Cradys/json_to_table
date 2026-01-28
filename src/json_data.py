@@ -6,9 +6,9 @@ class DataTypes(Enum):
     FLOAT = "float"
     BOOL = "bool"
     ARRAY = "array"
-    ARRAY_OBJECTS = "array of objects"
+    ARRAY_OBJECTS = "ArrayOfObjects"
     ARRAY_VALUES = "array of values"
-    OBJECT = "object"
+    OBJECT = "Object"
     NONE = "null"
 
 class JSONData():
