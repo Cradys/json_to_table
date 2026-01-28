@@ -6,8 +6,8 @@ class DataTypes(Enum):
     FLOAT = "float"
     BOOL = "bool"
     ARRAY = "array"
-    ARRAY_OBJECTS = "array_objects"
-    ARRAY_VALUES = "array_value"
+    ARRAY_OBJECTS = "array of objects"
+    ARRAY_VALUES = "array of values"
     OBJECT = "object"
     NONE = "null"
 
@@ -24,7 +24,7 @@ class JSONData():
 Key name: {self.name}
 data_type: {self.data_type}
 example: {self.example}
-children: {self.children}
+children: {len(self.children)}
 {"-"*20}"""
     
 
