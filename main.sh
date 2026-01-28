@@ -1,1 +1,1 @@
-uv run src/main.py example_array
+uv run src/main.py example_object
