@@ -35,7 +35,7 @@ def json_data_to_objects(json_data, name=None):
         if fields_list:
             for value in fields_list:
                 if value.data_type != DataTypes.OBJECT:
-                    return ParentObject(name=name, data_type=DataTypes.ARRAY_VALUES, children=fields_list)
+                    return DataObject(name=name, data_type=DataTypes.ARRAY_VALUES, children=fields_list),
                 
             merged_fields = merge_array_of_objects(fields_list)
             return ParentObject(name=name, data_type=DataTypes.ARRAY_OBJECTS, children=merged_fields)

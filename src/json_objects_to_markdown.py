@@ -41,11 +41,11 @@ def create_table_row(data_object):
     table_row += f"| {name} "
     if data_object.data_type in [DataTypes.ARRAY_OBJECTS, DataTypes.OBJECT]:
         table_header = f"{name.capitalize()}{data_type}"
-        table_row += f"| {data_type}\n [{table_header}](#{table_header.lower()}) "
+        table_row += f"| {data_type} [{table_header}](#{table_header.lower()}) "
     if data_object.data_type not in [DataTypes.ARRAY_OBJECTS, DataTypes.OBJECT]:
         table_row += f"| {data_type} "
     
-    table_row += f"| {example} |\n"
+    table_row += f"| {example if example else ""} |\n"
 
     return table_row
 
